@@ -1,5 +1,6 @@
 package com.shafi.springmanagement.authentication.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shafi.springmanagement.config.auditoring.Auditable;
 import org.hibernate.annotations.Where;
 
@@ -21,6 +22,7 @@ public class User extends Auditable {
     private String userName;
 
     @NotNull
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
