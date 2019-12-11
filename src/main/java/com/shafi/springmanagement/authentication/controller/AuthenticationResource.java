@@ -83,4 +83,9 @@ public class AuthenticationResource {
         MyUserDetails myUserDetails = (MyUserDetails) principal;
         return myUserDetails;
     }
+
+    @GetMapping("/all-user")
+    public ResponseEntity getAllUser(){
+        return ResponseEntity.ok(userRepository.findAll());
+    }
 }

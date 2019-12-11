@@ -36,6 +36,14 @@ public abstract class Auditable {
     @Column(name = "updated_by")
     private Long updatedBy;
 
+    @JsonIgnore
+    @Column(name = "deleted_by")
+    private Long deletedBy;
+
+    @JsonIgnore
+    @Column(name = "deleted_at")
+    private Instant deletedAt;
+
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -66,5 +74,21 @@ public abstract class Auditable {
 
     public void setUpdatedBy(Long updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public Long getDeletedBy() {
+        return deletedBy;
+    }
+
+    public void setDeletedBy(Long deletedBy) {
+        this.deletedBy = deletedBy;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
     }
 }

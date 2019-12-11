@@ -1,12 +1,14 @@
 package com.shafi.springmanagement.authentication.model;
 
 import com.shafi.springmanagement.config.auditoring.Auditable;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
+@Where(clause = "deleted = 0")
 public class User extends Auditable {
 
     @Id
@@ -22,7 +24,11 @@ public class User extends Auditable {
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "active")
     private boolean active;
+
+    @Column(name = "deleted")
+    private Integer deleted = 0;
 
     public Long getId() {
         return id;
@@ -54,5 +60,9 @@ public class User extends Auditable {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public void setDeleted() {
+        this.deleted = 1;
     }
 }
